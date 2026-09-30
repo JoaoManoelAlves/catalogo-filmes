@@ -1,76 +1,58 @@
-# React + TypeScript + Vite
+# Catálogo de Séries
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web para explorar séries de TV e montar uma lista de favoritos. Os dados vêm da [API da TVMaze](https://www.tvmaze.com/api).
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Catálogo de séries com pôster e nome
+- Página de detalhes com idioma, gêneros, descrição e imagem
+- Adicionar e remover séries dos favoritos
+- Página de favoritos com contador na barra de navegação
 
-## React Compiler
+## Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [React Router](https://reactrouter.com/) para navegação
+- Context API para gerenciar os favoritos
+- [Tailwind CSS](https://tailwindcss.com/) para estilização
+- [TVMaze API](https://www.tvmaze.com/api) como fonte de dados
 
-## Expanding the ESLint configuration
+## Rotas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Rota           | Descrição                        |
+| -------------- | -------------------------------- |
+| `/series`      | Catálogo de séries               |
+| `/series/:id`  | Detalhes de uma série            |
+| `/favorites`   | Lista de séries favoritas        |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Como executar
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Pré-requisito: [Node.js](https://nodejs.org/) instalado.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# clonar o repositório
+git clone <url-do-repositorio>
+cd <nome-da-pasta>
 
+# instalar as dependências
+bun install
+
+# iniciar o servidor de desenvolvimento
+bun run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Depois, acesse o endereço exibido no terminal (geralmente `http://localhost:5173`).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Estrutura do projeto
 
 ```
-# catalogo-filmes
+src/
+├── context/     # FavoritesContext e FavoritesProvider
+├── pages/       # SeriesPage, SeriesDetails e FavoritesShows
+├── components/  # NavBar
+└── types/       # ShowsTypes
+```
+
+## Licença
+
+Projeto para fins de estudo.
