@@ -31,11 +31,12 @@ export default function SeriesPage() {
           shows.map((show) => (
             <div
               key={show.id}
-              className="w-60 h-90 bg-gray-200 rounded-lg shadow-md p-4 mb-4  flex flex-col items-center justify-center"
+              className="w-80 h-110 bg-gray-200 rounded-lg shadow-md p-4 mb-4  flex flex-col items-center justify-center "
             >
-              <div className="w-[90%] h-[90%] flex flex-col justify-start items-center">
+              <div className="w-[90%] h-[90%] flex flex-col justify-start items-center gap-2 mb-2">
                 <img src={show.image.medium} alt="" className="w-[70%] h-[90%]" />
                 <h2>{show.name}</h2>
+                <span>{show.genres.join(", ")}</span>
               </div>
               <Link to={`/series/${show.id}`} 
             className="w-30 h-11 bg-[#a3e635] text-white rounded flex items-center justify-center hover:bg-[#4ade80]">Ver detalhes</Link>
